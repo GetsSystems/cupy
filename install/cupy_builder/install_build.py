@@ -150,11 +150,18 @@ def get_compiler_setting(ctx: Context, use_hip):
             library_dirs.append(os.path.join(cuda_path, 'lib'))
 
     if rocm_path:
-        include_dirs.append(os.path.join(rocm_path, 'include'))
+        include_dirs.append(os.path.join(rocm_path, 'include', 'hipblass'))
+        include_dirs.append(os.path.join(rocm_path, 'include', 'hipfft'))
+        include_dirs.append(os.path.join(rocm_path, 'include', 'rccl'))
+        include_dirs.append(os.path.join(rocm_path, 'include', 'hipblas'))
+        include_dirs.append(os.path.join(rocm_path, 'include', 'rocsolver'))
+        include_dirs.append(os.path.join(rocm_path, 'include', 'hipsparse'))
         include_dirs.append(os.path.join(rocm_path, 'include', 'hip'))
         include_dirs.append(os.path.join(rocm_path, 'include', 'rocrand'))
         include_dirs.append(os.path.join(rocm_path, 'include', 'hiprand'))
         include_dirs.append(os.path.join(rocm_path, 'include', 'roctracer'))
+        include_dirs.append(os.path.join(rocm_path, 'include'))
+
         library_dirs.append(os.path.join(rocm_path, 'lib'))
 
     if use_hip:

@@ -149,7 +149,7 @@ def preconfigure_modules(ctx: Context, MODULES, compiler, settings):
         if ctx.use_hip and module['name'] == 'cuda':
             if module.configure(compiler, settings):
                 hip_version = module.get_version()
-                if hip_version >= 401:
+                if hip_version >= 401 and hip_version < 571:
                     rocm_path = build.get_rocm_path()
                     inc_path = os.path.join(rocm_path, 'hipfft', 'include')
                     settings['include_dirs'].insert(0, inc_path)
